@@ -1,0 +1,14 @@
+.product--list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.product--card {
+    width: 15rem;
+    height: 10rem;
+    box-shadow: 0 0 18px black;
+}
