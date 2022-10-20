@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { getOneProduct } from '../../JS/actions/actionProducts/actionProducts'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+//import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 //import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
-import { deleteProduct} from '../../JS/actions/actionProducts/actionProducts';
-import { Link } from 'react-router-dom';
 
-const ProductsCard = ({product}) => {
+const ProductDetails = () => {
+    const {id} = useParams()
     const dispatch = useDispatch()
-  return (
+    const product = useSelector(state => state.productsReducer.oneProduct)
+
+    useEffect(() => {
+        dispatch(getOneProduct(id))  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     
-      <Card className='product--card' sx={{ maxWidth:  345}}>
+  return (
+    <Card className='product--card' sx={{ maxWidth:  345}}>
       {/* <CardMedia
         component="img"
         alt="green iguana"
@@ -28,14 +35,13 @@ const ProductsCard = ({product}) => {
           {product.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small" onClick={()=> {dispatch(deleteProduct(product._id))}}>Delete</Button>
-        <Link to={`/edit/${product._id}`}><Button size="small">Edit</Button></Link>
+        <Button size="small">Edit</Button>
         <Link to={`${product._id}`}><Button size="small">View detail</Button></Link>
-      </CardActions>
+      </CardActions> */}
     </Card>
-    
   )
 }
 
-export default ProductsCard
+export default ProductDetails

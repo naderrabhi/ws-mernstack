@@ -12,3 +12,8 @@
     height: 10rem;
     box-shadow: 0 0 18px black;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}

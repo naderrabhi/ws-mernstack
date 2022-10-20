@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import {getAllProducts} from './JS/actions/actionProducts/actionProducts'
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import ProductsList from './Components/Products/ProductsList';
+import ProductDetails from './Components/Products/ProductDetails';
+import AddProduct from './Pages/AddProduct/AddProducts';
+import EditProduct from './Components/Products/EditProduct';
+import Home from './Pages/Home/Home';
 
 function App() {
   const dispatch = useDispatch()
@@ -16,7 +19,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<ProductsList />}/>
+        <Route path='/' element={<Home />}/>
+        <Route path='/:id' element={<ProductDetails />}/>
+        <Route path='/add' element={<AddProduct />}/>
+        <Route path='/edit/:id' element={<EditProduct />}/>
       </Routes>
     </div>
   );

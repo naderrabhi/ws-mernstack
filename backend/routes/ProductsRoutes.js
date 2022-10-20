@@ -45,7 +45,7 @@ router.put('/:id', async (req,res) => {
         const productUpdated = await Products.updateOne({_id : req.params.id},{...req.body})
         if (productUpdated.modifiedCount) {
             const productAfterUpdated = await Products.findOne({_id: req.params.id})
-            return console.log("Product is updated successfully",productAfterUpdated)
+            return res.send({msg :"Product is updated successfully",productAfterUpdated})
         }else {
             return res.status(400).send({msg : 'Product is already updated'})
         }
